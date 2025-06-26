@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kandasamy M - Scrum Master & Agile Coach</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #2A5CAA;
+            --secondary: #1D3A5F;
+            --accent: #FF6B35;
+            --light: #F8F9FA;
+            --dark: #212529;
+            --gray: #6C757D;
+            --light-gray: #E9ECEF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #FFFFFF;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--accent);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .download-btn {
+            background: var(--primary);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .download-btn:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="1" d="M0,128L48,144C96,160,192,192,288,186.7C384,181,480,139,576,138.7C672,139,768,181,864,181.3C960,181,1056,139,1152,138.7C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            opacity: 0.1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .profile-img {
+            position: absolute;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 5px solid white;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .skill-tag {
+            background: var(--light-gray);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 15px 30px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -12px;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .timeline-content .date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .timeline-content p {
+            margin-bottom: 5px;
+        }
+        
+        /* Certificates Section */
+        .certificates-container {
+            overflow: hidden;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .certificates-track {
+            display: flex;
+            animation: scroll 25s linear infinite;
+            gap: 30px;
+            padding: 20px 0;
+        }
+        
+        .certificate-card {
+            flex: 0 0 300px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .certificate-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .certificate-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .certificate-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .certificate-content {
+            padding: 20px;
+        }
+        
+        .certificate-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .certificate-content p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(calc(-100% - 30px));
+            }
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-form {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: var(--secondary);
+        }
+        
+        .contact-info {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            width: 40px;
+            height: 40px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-details h3 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .profile-img {
+                width: 250px;
+                height: 250px;
+                right: 20px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .timeline::before {
+                left: 40px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 30px;
+            }
+            
+            .left::after, .right::after {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .certificates-track {
+                animation: scroll 20s linear infinite;
+            }
+            
+            .certificate-card {
+                flex: 0 0 250px;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .profile-img {
+                width: 200px;
+                height: 200px;
+                right: 10px;
+                top: 60%;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .certificates-track {
+                animation: scroll 15s linear infinite;
+            }
+            
+            .certificate-card {
+                flex: 0 0 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Kandasamy M</div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#timeline">Journey</a>
+                    <a href="#certificates">Credentials</a>
+                    <a href="#contact">Contact</a>
+                    <a href="KandasamyMResume_SM.pdf" class="download-btn" download>Download Resume</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Kandasamy M</h1>
+                <p>Scrum Master & Agile Coach | Driving Team Excellence & Continuous Improvement</p>
+                <a href="KandasamyMResume_SM.pdf" class="download-btn" download>Download Resume <i class="fas fa-download"></i></a>
+            </div>
+            <div class="profile-img">
+                <img src="https://via.placeholder.com/300x300" alt="Kandasamy M">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Aspiring to be a Scrum Master in the Information Technology industry, I bring a robust blend of creative leadership and Agile expertise built over 22 years of diverse experience, including 8+ years in Agile ecosystems. My passion lies in orchestrating high-performing teams, cultivating continuous improvement, and translating complex challenges into value-driven outcomes through Agile Methodologies.</p>
+                    <p>With a proven record of stakeholder alignment, workflow optimization, and fostering cross-functional collaboration, I aim to drive operational excellence in Agile environments. I am committed to enhancing team velocity, maximizing delivery efficiency, and elevating organizational agility with every sprint.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Agile & Scrum Methodologies</span>
+                        <span class="skill-tag">Scaling Agile</span>
+                        <span class="skill-tag">SAFe, LeSS</span>
+                        <span class="skill-tag">Jira, Confluence</span>
+                        <span class="skill-tag">Kanban</span>
+                        <span class="skill-tag">Stakeholder Management</span>
+                        <span class="skill-tag">User-Experience (UX)</span>
+                        <span class="skill-tag">Figma, Sketch</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Journey</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Graphic Designer (Scrum Master)</h3>
+                        <span class="date">08/2017 - 05/2024 | Bangalore, India</span>
+                        <p><strong>VMware</strong></p>
+                        <ul>
+                            <li>Streamlined task management workflow in Jira to align with Scrum practices</li>
+                            <li>Facilitated daily stand-ups, sprint planning, reviews, and retrospectives</li>
+                            <li>Led visual deliverable planning across multiple content and product teams</li>
+                            <li>Reduced sprint spillover by 40% in 2 months</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Web Designer (Scrum Team)</h3>
+                        <span class="date">12/2016 - 07/2017 | Chennai, India</span>
+                        <p><strong>Corporater</strong></p>
+                        <ul>
+                            <li>Collaborated with product owners and development teams for GPRC system</li>
+                            <li>Utilized Jira Kanban to track project progress</li>
+                            <li>Earned internal spotlight for coaching 3 cross-functional teams to adopt Scrum</li>
+                            <li>Created a unified product glossary for better team collaboration</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Principal Consultant</h3>
+                        <span class="date">12/2015 - 12/2016 | Gestalt Technologies Pvt</span>
+                        <ul>
+                            <li>Transitioned organization from Waterfall to Scrum</li>
+                            <li>Introduced Figma and Sketch into the UX process</li>
+                            <li>Supported UI/UX teams in backlog grooming and sprint planning</li>
+                            <li>Facilitated Sprint Retrospectives and introduced standardized templates</li>
+                            <li>Named Agile Coach of the Quarter after helping 3 teams increase sprint velocity</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Sr. Analyst - Technical writer</h3>
+                        <span class="date">06/2008 - 10/2015 | Dell</span>
+                        <ul>
+                            <li>Fostered transparency by leading regular tooling workshops</li>
+                            <li>Automated CD-label generation for OS builds</li>
+                            <li>Compiled and presented quarterly performance insights</li>
+                            <li>Enabled a 50% boost in documentation quality</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Team Lead tech</h3>
+                        <span class="date">12/2006 - 06/2008 | TEXTtech</span>
+                        <ul>
+                            <li>Practiced servant leadership to foster a distraction-free team environment</li>
+                            <li>Identified training needs and developed training courses</li>
+                            <li>Increased process adoption rates by 50%</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Senior Typesetter</h3>
+                        <span class="date">08/2005 - 10/2006 | Lapiz</span>
+                        <ul>
+                            <li>Creating and maintaining templates for book, journals and magazine</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Certifications & Credentials</h2>
+            </div>
+            <div class="certificates-container">
+                <div class="certificates-track">
+                    <div class="certificate-card">
+                        <div class="certificate-img">
+                            <img src="https://via.placeholder.com/300x200" alt="Certified Scrum Master (CSM)">
+                        </div>
+                        <div class="certificate-content">
+                            <h3>Certified Scrum Master (CSM)</h3>
+                            <p>Scrum Alliance</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-img">
+                            <img src="https://via.placeholder.com/300x200" alt="AI & Agility: A Comprehensive Introduction">
+                        </div>
+                        <div class="certificate-content">
+                            <h3>AI & Agility: A Comprehensive Introduction</h3>
+                            <p>Certification Body</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-img">
+                            <img src="https://via.placeholder.com/300x200" alt="AI for Product Management">
+                        </div>
+                        <div class="certificate-content">
+                            <h3>AI for Product Management</h3>
+                            <p>Certification Body</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-img">
+                            <img src="https://via.placeholder.com/300x200" alt="Practical Application of Gen AI for Project Manager">
+                        </div>
+                        <div class="certificate-content">
+                            <h3>Practical Application of Gen AI for Project Manager</h3>
+                            <p>Certification Body</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-img">
+                            <img src="https://via.placeholder.com/300x200" alt="Product Management: An Introduction">
+                        </div>
+                        <div class="certificate-content">
+                            <h3>Product Management: An Introduction</h3>
+                            <p>Certification Body</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-img">
+                            <img src="https://via.placeholder.com/300x200" alt="Product Management Insights">
+                        </div>
+                        <div class="certificate-content">
+                            <h3>Product Management Insights</h3>
+                            <p>Certification Body</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-img">
+                            <img src="https://via.placeholder.com/300x200" alt="Certified LMS Manager">
+                        </div>
+                        <div class="certificate-content">
+                            <h3>Certified LMS Manager</h3>
+                            <p>Certification Body</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-img">
+                            <img src="https://via.placeholder.com/300x200" alt="Certified Instructional Designer">
+                        </div>
+                        <div class="certificate-content">
+                            <h3>Certified Instructional Designer</h3>
+                            <p>Certification Body</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-img">
+                            <img src="https://via.placeholder.com/300x200" alt="Fundamentals of UI/UX Design">
+                        </div>
+                        <div class="certificate-content">
+                            <h3>Fundamentals of UI/UX Design</h3>
+                            <p>Certification Body</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-img">
+                            <img src="https://via.placeholder.com/300x200" alt="Foundations of User Experience (UX) Design">
+                        </div>
+                        <div class="certificate-content">
+                            <h3>Foundations of User Experience (UX) Design</h3>
+                            <p>Certification Body</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+91 9008166155</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>raj.kanda@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Bangalore, India</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>LinkedIn</h3>
+                            <p>www.linkedin.com/in/raj-kanda</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/raj-kanda" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <!-- Add other social media links if available -->
+            </div>
+            <p class="copyright">© 2025 Kandasamy M. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Pause certificate animation on hover
+        const certificatesTrack = document.querySelector('.certificates-track');
+        const certificatesContainer = document.querySelector('.certificates-container');
+        
+        certificatesContainer.addEventListener('mouseenter', () => {
+            certificatesTrack.style.animationPlayState = 'paused';
+        });
+        
+        certificatesContainer.addEventListener('mouseleave', () => {
+            certificatesTrack.style.animationPlayState = 'running';
+        });
+        
+        // Make timeline interactive with hover effect
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.querySelector('.timeline-content').style.transform = 'translateY(-5px)';
+                item.querySelector('.timeline-content').style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.querySelector('.timeline-content').style.transform = 'translateY(0)';
+                item.querySelector('.timeline-content').style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            });
+        });
+        
+        // Form submission handling
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Add form submission logic here
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>
